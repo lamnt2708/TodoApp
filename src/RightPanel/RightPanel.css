@@ -1,0 +1,35 @@
+.right-panel {
+    height: Calc(100vh-50px);
+    width: 20%;
+}
+
+.top-section {
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.top-section ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-section ul li{
+    display: block;
+    height: 3rem;
+    width: 80%;
+    padding: 0 10%;
+}
+
+.top-section ul a {
+  text-decoration: none;
+}
+
+.top-section::after {
+    content: '';
+    height: 1px;
+    width: 90%;
+    background-color: black;
+    left: 5%;
+}
