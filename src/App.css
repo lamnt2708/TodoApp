@@ -4,6 +4,7 @@
   text-align: center;
   display: flex;
   flex-flow: row wrap;
+  position: relative;
 }
 
 .App-logo {

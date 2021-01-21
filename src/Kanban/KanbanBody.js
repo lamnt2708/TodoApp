@@ -1,6 +1,4 @@
 import React from "react";
-import TaskModal from "../TaskModal.js";
-import ReactDOM from 'react-dom'
 
 
 const arr = [
@@ -18,14 +16,14 @@ const arr = [
   },
 ];
 
-function TakePosition(obj) {
+function ChangeTask(obj) {
   console.log(obj);
 }
 
-function Showtask(obj) {
+function TaskNote(obj) {
   return (
     <div className="sticky-note">
-      <div className="note-des" draggable onDragStart={ e => console.log(e)} onDragEnd={e => console.log(e)} onDragOver={e => console.log(e)}>
+      <div className="note-des" onClick={e => console.log(obj)}>
         <h4>{obj.name}</h4>
         <div className="list-task">
           <ul>
@@ -42,6 +40,7 @@ function Showtask(obj) {
 const status = ["stt", "backlog", "todo", "inprocess", "stagging", "done"];
 
 export default function DisplayTask(props) {
+  console.log(props);
   return arr.map((obj) => {
     return (
       <tr>
@@ -50,9 +49,9 @@ export default function DisplayTask(props) {
             <td
               key={s}
               className={s === "stt" ? "status-column" : "kanban-column " + s}
-              onClick={(e) => TakePosition(obj)}
+             // onClick={(e) => ChangeTask(obj)}
             >
-              {obj.status === s && Showtask(obj)}
+              {obj.status === s && TaskNote(obj)}
             </td>
           );
         })}
