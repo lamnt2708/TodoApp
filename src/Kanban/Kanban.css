@@ -1,0 +1,44 @@
+.kanban {
+    height: Calc(100% -50px);
+    width: Calc(80% - 2px);
+}
+
+.kanban table {
+    width: 100%;
+    
+}
+
+.statusrow{
+    height: 50px;
+}
+
+.status-column {
+    width: 5%;
+}
+
+.kanban-column {
+    width: 19%;
+}
+
+.kanban table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.kanban tr {
+    height: 100%;
+}
+
+.sticky-note {
+    height: 100%;
+    margin: 2rem 1rem;
+}
+
+.note-des {
+    border: 1px solid black;
+    box-shadow: 5px 5px gray;
+}
+
+.note-des li{
+    text-align: left;
+}
