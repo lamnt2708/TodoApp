@@ -20,10 +20,10 @@ function ChangeTask(obj) {
   console.log(obj);
 }
 
-function TaskNote(obj) {
+function TaskNote(obj, props) {
   return (
     <div className="sticky-note">
-      <div className="note-des" onClick={e => console.log(obj)}>
+      <div className="note-des" onClick={props.onClick}>
         <h4>{obj.name}</h4>
         <div className="list-task">
           <ul>
@@ -51,7 +51,7 @@ export default function DisplayTask(props) {
               className={s === "stt" ? "status-column" : "kanban-column " + s}
              // onClick={(e) => ChangeTask(obj)}
             >
-              {obj.status === s && TaskNote(obj)}
+              {obj.status === s && TaskNote(obj, props)}
             </td>
           );
         })}

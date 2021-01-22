@@ -11,7 +11,8 @@ constructor(props){
 }
 
 handleOpenModal(e){
-    this.setState({targetobj: e.target.value})
+    console.log('e.target', e.target)
+    // this.setState({targetobj: e.target.value})
 }
     render() {
         return (
