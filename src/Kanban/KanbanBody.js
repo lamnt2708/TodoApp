@@ -23,7 +23,7 @@ function ChangeTask(obj) {
 function TaskNote(obj, props) {
   return (
     <div className="sticky-note">
-      <div className="note-des" onClick={props.onClick}>
+      <div className="note-des" onClick={e => props.onClick(obj)}>
         <h4>{obj.name}</h4>
         <div className="list-task">
           <ul>
@@ -40,7 +40,6 @@ function TaskNote(obj, props) {
 const status = ["stt", "backlog", "todo", "inprocess", "stagging", "done"];
 
 export default function DisplayTask(props) {
-  console.log(props);
   return arr.map((obj) => {
     return (
       <tr>

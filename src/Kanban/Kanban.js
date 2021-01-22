@@ -4,7 +4,6 @@ import DisplayTask from "./KanbanBody";
 
 
 export default function KanbanTable(props) {
-  console.log('props table', props)
   return (
     <table id="kanban" className="kanban">
       <thead>
