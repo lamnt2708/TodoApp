@@ -1,20 +1,26 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import TaskModalDetail from "./TaskModalDetail";
 import "./TaskModal.css";
 
 
 export default function TaskModal(obj) {
-  const [openModal, setopenModal] = useState( 0 );
-  const [targetTask, setTargetTask] = useState(obj.obj)
+  const [openModal, setopenModal] = useState(0);
+  const [targetTask, setTargetTask] = useState({});
+  
+  
+  useEffect(() => {
+    if (Object.keys(obj.obj).length > 0 && openModal === 0) { setTargetTask(obj.obj); setopenModal(1) }
 
-function handleClose(e){
-  setopenModal(0);
-  setTargetTask({});
-}
+  }, [obj.obj])
+
+  function handleClose(e) {
+    setopenModal(0);
+    setTargetTask({});
+  }
 
   return (
-    <div className="taskmodal" style={{display: openModal ? "flex" : "none"}}>
-      <TaskModalDetail task={obj} closeModal={handleClose}/>
+    <div className="taskmodal" style={{ display: openModal ? "flex" : "none" }}>
+      <TaskModalDetail task={obj} closeModal={handleClose} />
     </div>
   );
 }
