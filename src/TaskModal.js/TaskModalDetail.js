@@ -10,18 +10,17 @@ export default function TaskModalDetail(props) {
     props.closeModal(0);
   }
 
-  return (
+return Object.keys(obj).length ? (
     <div className="modaldetail">
       <div className="modal-header">
         <h3>Edit {obj.name}</h3>
       </div>
-      <textarea className="task-desc">{obj.name}</textarea>
       <select value={obj.status}>
         {status.map((s) => {
-          return <item>{s}</item>;
+          return <option value={s}>{s}</option>;
         })}
       </select>
       <button type="submit" onClick={e=> handlecloseModal(0)}>Change</button>
     </div>
-  );
+  ) : null;
 }
