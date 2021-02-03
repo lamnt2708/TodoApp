@@ -1,28 +1,27 @@
-import React from 'react'
-import './Kanban.css'
-import KanbanHeader from './KanbanHeader'
-import KanbanTable from './Kanban'
-import TaskModal from '../TaskModal.js';
+import React, {useState} from "react";
+import "./Kanban.css";
+import KanbanHeader from "./KanbanHeader";
+import KanbanTable from "./Kanban";
+import TaskModal from "../TaskModal/index.js";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
-class Kanban extends React.Component {
-constructor(props){
-    super(props);
-    this.state = {targetobj: {}}
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-}
+function Kanban() {
+  const [targetObj, settargetObj] = useState({});
 
-handleOpenModal(e){
-    this.setState({targetobj : e})
-    console.log("state change", this.state.targetobj)
-}
-    render() {
-        return (
-            <div className='kanban'>
-                <TaskModal obj={this.state.targetobj} />
-                <KanbanHeader />
-                <KanbanTable handeOpenModal={this.handleOpenModal}/>
-            </div>
-        )
-    }
+  function handleOpenModal(e) {
+    settargetObj(e);
+    console.log('called')
+  }
+
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <div className="kanban">
+        <TaskModal obj={targetObj} closeModal={settargetObj}/>
+        <KanbanHeader />
+        <KanbanTable handeOpenModal={handleOpenModal} />
+      </div>
+    </DndProvider>
+  );
 }
 export default Kanban;

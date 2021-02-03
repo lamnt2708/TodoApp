@@ -3,12 +3,7 @@ import React from "react";
 const status = ["stt", "backlog", "todo", "inprocess", "stagging", "done"];
 
 export default function TaskModalDetail(props) {
-  const obj = props.task.obj;
-
-  function handlecloseModal(e) {
-    console.log(props.closeModal)
-    props.closeModal(0);
-  }
+  const obj = props.task;
 
 return Object.keys(obj).length ? (
     <div className="modaldetail">
@@ -20,7 +15,7 @@ return Object.keys(obj).length ? (
           return <option value={s}>{s}</option>;
         })}
       </select>
-      <button type="submit" onClick={e=> handlecloseModal(0)}>Change</button>
+      <button type="submit" onClick={e=> props.closeModal(0)}>Change</button>
     </div>
   ) : null;
 }

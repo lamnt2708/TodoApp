@@ -1,55 +1,36 @@
 import React from "react";
+import TaskNote from "./TaskNote";
+import { useDrop } from "react-dnd";
+import { ItemType } from "../ItemType/ItemType";
+import {TaskArr} from '../ItemType/TaskList'
 
-
-const arr = [
-  {
-    status: "inprocess",
-    name: "Implement Todo App",
-    tasklist: ["implenment Ui", "implenment backend", "deploy"],
-    time: "2021/1",
-  },
-  {
-    status: "todo",
-    name: "Plan and preper for new year",
-    tasklist: ["plan for whole year", "do 1st month plan"],
-    time: "2021/12",
-  },
-];
 
 function ChangeTask(obj) {
   console.log(obj);
 }
 
-function TaskNote(obj, props) {
-  return (
-    <div className="sticky-note">
-      <div className="note-des" onClick={e => props.onClick(obj)}>
-        <h4>{obj.name}</h4>
-        <div className="list-task">
-          <ul>
-            {obj.tasklist.map((task) => (
-              <li>{task}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
+const status = ["stt", "backlog", "todo", "inprocess", "stagging", "done"];
+function changeStatus(e) {
+  console.log(e.target.value);
 }
 
-const status = ["stt", "backlog", "todo", "inprocess", "stagging", "done"];
-
 export default function DisplayTask(props) {
-  return arr.map((obj) => {
+  
+  const [{ isOver }, drop] = useDrop({
+    accept: ItemType.Task,
+    drop: (e) => changeStatus(e),
+    collect: (monitor) => ({ isOver: !!monitor.isOver() }),
+  });
+
+
+  return TaskArr.map((obj) => {
     return (
       <tr>
         {status.map((s) => {
           return (
             <td
               key={s}
-              className={s === "stt" ? "status-column" : "kanban-column " + s}
-             // onClick={(e) => ChangeTask(obj)}
-            >
+              className={s === "stt" ? "status-column" : "kanban-column " + s}            >
               {obj.status === s && TaskNote(obj, props)}
             </td>
           );
